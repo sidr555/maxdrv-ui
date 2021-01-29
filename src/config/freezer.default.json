@@ -1,0 +1,69 @@
+{
+  "name": "wi-frost",
+  "location": "s-home",  "title": "Большой серый холодильник",
+  "brand": "Daewoo",
+  "model": "FR-530",
+  "image": "https://naobzorah.ru/images/pr/380x380/123/122948/38744.jpg",
+
+  "states" : {
+    "wait": "Недоступен",
+    "sleep": "Сон",
+    "freeze": "Охлаждение",
+    "heat": "Разморозка",
+    "danger": "Авария",
+    "reboot": "Перезагрузка",
+    "unknown": "Неизвестно"
+  },
+  "jobs": {
+    "reboot": "Рестарт",
+    "sleep": "Спать",
+    "freeze": "Холодить",
+    "heat": "Оттаивать"
+  },
+  "devs": [
+    {
+      "pin": 4,
+      "type": "onewire",
+      "name": "temp_sensors",
+      "title": "Шина 1-wire"
+    },
+    {
+      "pin": 5,
+      "type": "switch",
+      "name": "compressor",
+      "title": "Компрессор"
+    },
+    {
+      "pin": 18,
+      "type": "switch",
+      "name": "compressor_fan",
+      "title": "Вентилятор компрессора"
+    },
+    {
+      "pin": 19,
+      "type": "switch",
+      "name": "heater",
+      "title": "Отопитель"
+    },
+    {
+      "pin": 21,
+      "type": "switch",
+      "name": "fan",
+      "title": "Вентилятор морозилки"
+    }
+  ],
+  "onewire": [
+    {
+      "id": "284d341104000093",
+      "type": "temp_dallas",
+      "name": "temp_moroz",
+      "title": "Морозильная камера"
+    },
+    {
+      "id": "28bf19110400009b",
+      "type": "temp_dallas",
+      "name": "temp_body",
+      "title": "Холодильная камера"
+    }
+  ]
+}

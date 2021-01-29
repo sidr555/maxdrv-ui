@@ -1,34 +1,18 @@
 import React, {useEffect} from 'react';
 import './App.css';
 import {
-    AppBar, //BottomNavigation, BottomNavigationAction,
-    // Box,
-//    Button,
-    // Card, CardActions,
-    // CardContent,
-    // CardMedia,
+    AppBar,
     Container,
-    // Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle,
-//    Grid,
     IconButton,
-    // Menu, MenuItem,
-    // Paper, TextField,
     Toolbar,
-    Typography
-} from "@material-ui/core";
-// import MenuIcon from '@material-ui/icons/Menu';
-// import LayerIcon from '@material-ui/icons/Layers';
-import {makeStyles} from "@material-ui/core/styles";
-//import AccountCircle from "@material-ui/icons/AccountCircle";
-// import PlayCircleFilledIcon from "@material-ui/icons/PlayCircleFilled";
-// import FolderIcon from '@material-ui/icons/Folder';
-// import RestoreIcon from '@material-ui/icons/Restore';
-// import FavoriteIcon from '@material-ui/icons/Favorite';
-// import LocationOnIcon from '@material-ui/icons/LocationOn';
-// import {Image} from "@material-ui/icons";
-import LinkOff from "@material-ui/icons/LinkOff";
-import LinkOn from "@material-ui/icons/Link";
+    Typography,
 
+} from "@material-ui/core";
+
+import {makeStyles} from "@material-ui/core/styles";
+
+import { Link, LinkOff, GroupWork } from "@material-ui/icons";
+// import LinkOn from "@material-ui/icons/Link";
 
 import AuthMenu from "./components/AuthMenu";
 
@@ -94,6 +78,10 @@ const useStyles = makeStyles((theme) => ({
     cardContent: {
         flexGrow: 1
     },
+    bottomBar: {
+        top: 'auto',
+        bottom: 0,
+    },
 }));
 
 
@@ -130,7 +118,7 @@ function App() {
                         <Typography variant="h5" align="center" className={classes.title}>Wi-Frost</Typography>
 
                         <IconButton aria-label="MQTT link" color="inherit">
-                            { client.connected && <LinkOn /> }
+                            { client.connected && <Link /> }
                             { !client.connected && <LinkOff /> }
                         </IconButton>
 
@@ -149,6 +137,21 @@ function App() {
                     </Container>
                 </div>
             </main>
+            <AppBar position="fixed" color="primary" className={classes.bottomBar}>
+                <Toolbar>
+                    <IconButton edge="start" color="inherit" aria-label="open drawer" onClick={console.log('show units')}>
+                        <GroupWork /> Units
+                    </IconButton>
+                    {/*<Fab color="secondary" aria-label="add" className={classes.fabButton}>*/}
+                    {/*    <AddIcon />*/}
+                    {/*</Fab>*/}
+                    {/*<div className={classes.grow} />*/}
+                    {/*<IconButton color="inherit">*/}
+                    {/*    <SearchIcon />*/}
+                    {/*</IconButton>*/}
+
+                </Toolbar>
+            </AppBar>
         </div>
     );
 }

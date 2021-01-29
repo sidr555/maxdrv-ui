@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
 import { observer } from 'mobx-react-lite'
 
-import { Grid } from '@material-ui/core'
+import { Grid, FormControlLabel, Switch } from '@material-ui/core'
+
 
 import StateItem from './StateItem'
 import StateSectionTitle from './StateSectionTitle'
@@ -32,9 +33,9 @@ const Freezer = observer(({ auth, mqtt, menu, classes }) => {
     <hr/>
 
     <Grid container spacing={2}>
-        <Grid item xs={12} sm={4} md={4} lg={4} align='right'>
-            <UnitImage unit={ unit } />
-        </Grid>
+        {/*<Grid item xs={12} sm={4} md={4} lg={4} align='right'>*/}
+        {/*    <UnitImage unit={ unit } />*/}
+        {/*</Grid>*/}
         <Grid item xs={12} sm={8} md={8} lg={8} container alignContent='space-between'>
 
 
@@ -55,11 +56,34 @@ const Freezer = observer(({ auth, mqtt, menu, classes }) => {
                 )
             })}
 
-            {auth &&
+            {auth && <>
+                <StateSectionTitle title='Задания'/>
+
+                <Grid container>
+                    <Grid item xs={12}>
+                        <FormControlLabel
+                            control={
+                                <Switch
+                                    checked={true}
+                                    onChange={console.log('111')}
+                                    name="sleep"
+                                    align="center"
+                                    color="secondary"
+                                />
+                            }
+                            label="Режим покоя"
+                        />
+                    </Grid>
+                </Grid>
+
+                <StateItem key={'job_sleep'} title='Ожидание' unit={ unit } port={ 1 } defaultValue='-' />
+
+
                 <Grid container>
                     {/*<StateSectionTitle title='Изменить режим работы'/>*/}
                     <UnitJobs unit={ unit } classes={ classes } />
                 </Grid>
+            </>
             }
         </Grid>
     </Grid>
